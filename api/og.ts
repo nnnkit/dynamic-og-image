@@ -27,6 +27,7 @@ async function getOptions(isDev: boolean) {
 }
 async function getScreenshot(url: string, isDev: boolean) {
   const options: Options = await getOptions(isDev);
+  console.log(options, "options");
   const browser = await launch(options);
   const page = await browser.newPage();
   page.setViewport({ width: 1200, height: 630 });
@@ -38,14 +39,17 @@ export default async function handeler(
   res: ServerResponse
 ) {
   try {
+    console.log(isDev, "isDev");
+
     let file = await getScreenshot("https://coronacount.co/ogsample", isDev);
     res.setHeader("Content-Type", "image/png");
+    res.setHeader("Cache-Control", "public,immutable,max-age=3600");
     res.statusCode = 200;
     res.end(file);
   } catch (error) {
     res.statusCode = 500;
     res.setHeader("Content-Type", "text/html");
-    res.end("<h1>AN error occured</h1>");
+    res.end("<h1>An error occured</h1>");
     console.error("Error", error);
   }
 }
