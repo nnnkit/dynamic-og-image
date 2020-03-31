@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**",
+      "use": "@now/node",
+      "config": { "maxLambdaSize": "36mb" }
+    }
+  ],
+  "routes": [{ "src": "/og.jpg", "dest": "/api/og.ts" }]
+}

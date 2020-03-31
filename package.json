@@ -1,0 +1,21 @@
+{
+  "name": "og-dynamic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ankit <iankit17@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "now-build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "1.11.1",
+    "puppeteer-core": "1.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "13.9.8",
+    "@types/puppeteer-core": "1.9.0",
+    "typescript": "3.8.3"
+  }
+}
